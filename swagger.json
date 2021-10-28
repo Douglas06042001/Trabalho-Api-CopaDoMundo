@@ -1,0 +1,425 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API COOPA DO MUNDO"
+  },
+  "tags": [
+    {
+      "name": "team"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/team": {
+      "get": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Listar todos os times existentes",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "teams"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Criar um novo time",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "O id é de escolha opcional, favor usar uma ordem pois o mesmo será usado para outras funcionalidades",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/team"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Time criado com sucesso"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Atualizar Time Existente",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do time a ser atualizado",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/team"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Time atualizado com sucesso"
+          },
+          "404": {
+            "description": "Time não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "team"
+        ],
+        "summary": "Deletar time pelo ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do time a ser deletado",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Time deletado com sucesso"
+          },
+          "404": {
+            "description": "Time não encontrado"
+          }
+        }
+      }
+    },
+    "/player": {
+      "get": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Listar todos os jogadores",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "players"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Criar um novo jogador",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "O id é de escolha opcional, favor usar uma ordem pois o mesmo será usado para outras funcionalidades",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/player"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Jogador criado com sucesso"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Atualizar um jogador existente",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do jogador a ser atualizado",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/player"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Jogador atualizado com sucesso"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "player"
+        ],
+        "summary": "Deletar um jogador pelo id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do jogador que será deletado",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso"
+          },
+          "404": {
+            "description": "Jogador não encontrado"
+          }
+        }
+      }
+    },
+    "/match": {
+        "get": {
+          "tags": [
+            "match"
+          ],
+          "summary": "Listar todas as partidas",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "matchs"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "match"
+          ],
+          "summary": "Criar uma nova partida",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "O id é de escolha opcional, favor usar uma ordem pois o mesmo será usado para outras funcionalidades",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/match"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Partida criada com sucesso"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "match"
+          ],
+          "summary": "Atualizar uma partida existente",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da partida a ser atualizada",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/match"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Partida atualizada com sucesso"
+            },
+            "404": {
+              "description": "Não Encontrado"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "match"
+          ],
+          "summary": "Deletar uma partida pelo id",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da partida a ser deletado",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Partida deletada com sucesso"
+            },
+            "404": {
+              "description": "Partida não encontrada"
+            }
+          }
+        }
+      }
+    },
+      "definitions": {
+        "team": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "nome": {
+              "type": "string"
+            },
+            "pontos": {
+              "type": "string"
+            },
+            "saldogols": {
+              "type": "string"
+            },
+            "grupo": {
+              "type": "string"
+            }
+          }
+        },
+        "player": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "nome": {
+              "type": "string"
+            },
+            "pais": {
+              "type": "string"
+            },
+            "numero": {
+              "type": "integer"
+            },
+            "timeatual": {
+              "type": "string"
+            },
+            "posicao": {
+              "type": "string"
+            }
+          }
+        },
+        "match": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "data": {
+              "type": "string"
+            },
+            "horario": {
+              "type": "string"
+            },
+            "estadio": {
+              "type": "string"
+            },
+            "cidade": {
+              "type": "string"
+            },
+            "capacidadeEstadio": {
+              "type": "string"
+            },
+            "timeA": {
+              "type": "string"
+            },
+            "timeB": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  
